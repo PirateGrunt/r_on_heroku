@@ -11,6 +11,8 @@ settings.configure(
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ),
+    ALLOWED_HOSTS = [ 'r-on-heroku.herokuapp.com',
+                      'localhost'],
 )
 
 
