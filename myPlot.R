@@ -1,5 +1,5 @@
 png(filename="static/myPlot.png")
 
-hist(rnorm(1000))
+hist(rnorm(100))
 
 dev.off()
