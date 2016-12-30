@@ -1,5 +1,4 @@
 Django==1.10.4
 gunicorn==19.6.0
-rpy2==2.8.5
 six==1.10.0
 whitenoise==3.2.2
