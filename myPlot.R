@@ -1,5 +1,5 @@
 png(filename="static/myPlot.png")
 
-hist(rnorm(100))
+hist(rnorm(100), main = Sys.time())
 
-dev.off()
+invisible(dev.off())
