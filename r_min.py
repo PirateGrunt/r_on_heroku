@@ -34,7 +34,7 @@ from django.template import Context, loader
 import subprocess
 
 def index(request):
-    subprocess.call("Rscript ./init.R", shell=True)
+    subprocess.call("Rscript ./myPlot.R", shell=True)
     return render(request, 'index.html')
 
 urlpatterns = (
