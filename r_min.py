@@ -1,6 +1,9 @@
 import sys
+import os
 
 from django.conf import settings
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 settings.configure(
     DEBUG=True,
@@ -13,14 +16,26 @@ settings.configure(
     ),
     ALLOWED_HOSTS = [ 'r-on-heroku.herokuapp.com',
                       'localhost'],
+    BASE_DIR = BASE_DIR,
+    STATIC_URL = '/static/',
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static'),
+    TEMPLATES = [{
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [ os.path.join(BASE_DIR, 'templates'), ],
+        }],
+    INSTALLED_APPS = [ 'django.contrib.staticfiles', ],
 )
-
 
 from django.conf.urls import url
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import Context, loader
+
+import subprocess
 
 def index(request):
-  return HttpResponse('This is my minimal R example')
+    subprocess.call("Rscript ./init.R", shell=True)
+    return render(request, 'index.html')
 
 urlpatterns = (
     url(r'^$', index),
@@ -30,8 +45,6 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)
-
-import os
 
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise
