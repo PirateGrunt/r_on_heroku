@@ -35,7 +35,7 @@ import subprocess
 
 def index(request):
     # subprocess.call("R CMD BATCH ./myPlot.R", shell=True)
-    subprocess.call("fakechroot fakeroot chroot /app/.root /usr/bin/R -f ./myPlot.R --gui-none --no-save", shell=True)
+    subprocess.call("fakechroot fakeroot chroot /app/.root /usr/bin/R CMD BATCH ./myPlot.R", shell=True)
     return render(request, 'index.html')
 
 urlpatterns = (
