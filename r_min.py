@@ -33,15 +33,18 @@ from django.template import Context, loader
 
 import subprocess
 
-# import rpy2.robjects as robjects
+def batch_r(str_source):
+    # call_string = "fakechroot fakeroot chroot /app/.root /usr/bin/"     + R CMD BATCH
+    call_string = os.getenv('R_EXEC_STRING', '') + 'R CMD BATCH'
+    file_target = os.getenv('R_SCRIPT_FOLDER_PREFIX', '') + str_source
+    subprocess.call(call_string + ' ' + file_target, shell=True)
+
+    return None
 
 def index(request):
-    subprocess.call("fakechroot fakeroot chroot /app/.root /usr/bin/R CMD BATCH ~/myPlot.R", shell=True)
-    # robjects.r('source("./myPlot.R"')
+    batch_r('myPlot.R')
 
     return render(request, 'index.html')
-
-    # return HttpResponse(robjects.r('getwd()'))
 
 urlpatterns = (
     url(r'^$', index),
