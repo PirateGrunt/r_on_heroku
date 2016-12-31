@@ -1,4 +1,4 @@
-png(filename="app/static/myPlot.png")
+png(filename="~/static/myPlot.png")
 
 hist(rnorm(100), main = Sys.time())
 
