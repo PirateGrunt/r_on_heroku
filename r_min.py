@@ -33,7 +33,7 @@ from django.template import Context, loader
 
 import subprocess
 
-# import rpy2.robjects as robjects
+import rpy2.robjects as robjects
 
 def index(request):
     # subprocess.call("R CMD BATCH ./myPlot.R", shell=True)
