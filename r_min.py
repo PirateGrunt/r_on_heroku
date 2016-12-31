@@ -36,13 +36,13 @@ import subprocess
 # import rpy2.robjects as robjects
 
 def index(request):
-    subprocess.call("R CMD BATCH ./myPlot.R", shell=True)
+    # subprocess.call("R CMD BATCH ./myPlot.R", shell=True)
     # subprocess.call("fakechroot fakeroot chroot /app/.root /usr/bin/R CMD BATCH ./myPlot.R", shell=True)
     # robjects.r('source("./myPlot.R"')
 
-    return render(request, 'index.html')
+    # return render(request, 'index.html')
 
-    # return HttpResponse(robjects.r('getwd()'))
+    return HttpResponse(robjects.r('getwd()'))
 
 urlpatterns = (
     url(r'^$', index),
