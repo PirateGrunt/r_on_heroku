@@ -36,8 +36,7 @@ import subprocess
 # import rpy2.robjects as robjects
 
 def index(request):
-    # subprocess.call("R CMD BATCH ./myPlot.R", shell=True)
-    subprocess.call("fakechroot fakeroot chroot /app/.root /usr/bin/R CMD BATCH ./myPlot.R", shell=True)
+    subprocess.call("fakechroot fakeroot chroot /app/.root /usr/bin/R CMD BATCH ~/myPlot.R", shell=True)
     # robjects.r('source("./myPlot.R"')
 
     return render(request, 'index.html')
